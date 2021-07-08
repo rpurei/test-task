@@ -1,0 +1,37 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}{{ app_title }}{% endblock %}
+
+{% block navbar %}
+    <div class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+        <form method="POST" action="" style="margin-left: auto; margin-right: auto; width: 90%;">
+                <div class="form-group">
+                    {{ form_search.csrf_token() }}
+                    <label for=""> {{ form_search.search_word.label }}</label>
+                    {{ form_search.search_word }}
+                    <strong> с даты: </strong>
+                    {{ form_search.date_before(class='datepicker') }}
+                    <strong> по дату: </strong>
+                    {{ form_search.date_after(class='datepicker') }}
+                    <label for=""> {{ form_search.save_db.label }}</label>
+                    {{ form_search.save_db }}
+                    {{ form_search.submit }}
+                    {% if db_con %}<strong style="color: green">БД</strong>{% else %}<strong style="color: red">БД</strong>{% endif %}
+                </div>
+                <div class="form-group">
+
+                </div>
+        </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        {% if search_word %}
+            <h4>Результаты поиска по: "{{ search_word }}"{% if date_before %} с даты: "{{ date_before }}"{% endif %}{% if date_after %} по дату: "{{ date_after }}"{% endif %}</h4>
+            {{ search_result | safe }}
+        {% endif %}
+    </div>
+{% endblock %}

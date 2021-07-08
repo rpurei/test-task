@@ -1,0 +1,13 @@
+APP_NAME = 'Тестовое задание'
+DEBUG = True
+ENV = 'development'
+CELERY_BROKER_URL = 'redis://redis:6379/0'
+CELERY_RESULT_BACKEND = 'redis://redis:6379/0'
+SECRET_KEY = 'Security below zero'
+BOOTSTRAP_SERVE_LOCAL = True
+MYSQL_DATABASE_USER = 'root'
+MYSQL_DATABASE_PASSWORD = 'root'
+MYSQL_DATABASE_DB = 'pubmed'
+MYSQL_DATABASE_HOST = 'db'
+MYSQL_DATABASE_PORT = '3306'
+DB_CONNECTION = False
